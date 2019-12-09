@@ -7,13 +7,13 @@ using System.Runtime.Serialization.Json;
 
 namespace TestCode
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             LstSuperheroes newHero = new LstSuperheroes();
 
-            string MsgData = "{ \"LstSuperheroes\": [ { \"Id\": 1, \"Name\": \"John Priest\" }, { \"Id\": 2, \"Name\": \"John Wick\" } ] }";
+            string MsgData = "[{ \"LstSuperheroes\": [ { \"Id\": 1, \"Name\": \"John Priest\" }, { \"Id\": 2, \"Name\": \"John Wick\" } ] }]";
 
             newHero.ParseProfileInfo(MsgData);
 
@@ -30,7 +30,11 @@ namespace TestCode
         {
             
             var heroDetails = JsonConvert.DeserializeObject<List<LstSuperheroes>>(msgData);
-            
+
+            Console.WriteLine(heroDetails.Count);
+            Console.WriteLine(heroDetails[0].Name);
+
+
         }
 
     }
