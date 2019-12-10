@@ -13,9 +13,15 @@ namespace TestCode
         {
             LstSuperheroes newHero = new LstSuperheroes();
 
-            string MsgData = "[{ \"LstSuperheroes\": [ { \"Id\": 1, \"Name\": \"John Priest\" }, { \"Id\": 2, \"Name\": \"John Wick\" } ] }]";
+            //string MsgData = "{ \"LstSuperheroes\": [ { \"Id\": 1, \"Name\": \"John Priest\" }, { \"Id\": 2, \"Name\": \"John Wick\" } ] }";
+
+            string MsgData = "[ { \"Id\": 1, \"Name\": \"John Priest\" }, { \"Id\": 2, \"Name\": \"John Wick\" }] ";
+
 
             newHero.ParseProfileInfo(MsgData);
+
+            Console.WriteLine(newHero.Id);
+            Console.WriteLine(newHero.Name);
 
         }
     }
@@ -31,8 +37,11 @@ namespace TestCode
             
             var heroDetails = JsonConvert.DeserializeObject<List<LstSuperheroes>>(msgData);
 
-            Console.WriteLine(heroDetails.Count);
-            Console.WriteLine(heroDetails[0].Name);
+            this.Id = heroDetails[0].Id;
+            this.Name = heroDetails[0].Name;
+
+            //Console.WriteLine(heroDetails.Count);
+            //Console.WriteLine(heroDetails[0].Name);
 
 
         }
